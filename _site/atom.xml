@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Lanyon</title>
+ <link href="http://lanyon.getpoole.com/atom.xml" rel="self"/>
+ <link href="http://lanyon.getpoole.com/"/>
+ <updated>2016-02-12T15:02:57-05:00</updated>
+ <id>http://lanyon.getpoole.com</id>
+ <author>
+   <name>Mark Otto</name>
+   <email>markdotto@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Building a CLI Gem</title>
+   <link href="http://lanyon.getpoole.com/2016/01/27/jamesnovak-cli-gem/"/>
+   <updated>2016-01-27T00:00:00-05:00</updated>
+   <id>http://lanyon.getpoole.com/2016/01/27/jamesnovak-cli-gem</id>
+   <content type="html">&lt;div class=&quot;message&quot;&gt;
+  My first Ruby CLI Gem: Train Hard
+&lt;/div&gt;
+
+&lt;p&gt;My idea for this gem is fairly straightforward. It is a command line interface that scrapes from a website that lists exercises by muscle groups. Each muscle group has exercises, and each exercise has a rating. Later in the process I would like to add functionality that displays only exercises based on a certain rating criteria.&lt;/p&gt;
+
+&lt;p&gt;The first order of business is to bust out the notepad and organize the project into small bite sized pieces. Here’s what I got (shoutout to Avi ;))&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Plan your gem, imagine your interface&lt;/li&gt;
+  &lt;li&gt;Start with the project structure - google&lt;/li&gt;
+  &lt;li&gt;Start with the entry point  - the file run&lt;/li&gt;
+  &lt;li&gt;Stub out the interface&lt;/li&gt;
+  &lt;li&gt;Start making things real. Discover objects. PROGRAM.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Alright! Lets get started shall we?&lt;/p&gt;
+
+&lt;h2 id=&quot;plan-your-gem-imagine-your-interface&quot;&gt;1. Plan your gem, imagine your interface&lt;/h2&gt;
+
+&lt;p&gt;A CLI seems like a fairly simple idea. The program asks a user a question, and the user responds to the question with the correct input. So when we first run our gem we want to ask our user an important question (one which they want to be asked since they installed the gem, and one that is concise and to the point.)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Which muscle group are you training today?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Using &lt;code&gt;gets.strip&lt;/code&gt; we can determine by number, which muscle group a user wants to see exercises for, then display that list to the user. We will of course list those muscle groups by number.&lt;/p&gt;
+
+&lt;h2 id=&quot;start-with-the-project-structure&quot;&gt;2. Start with the project structure&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;bundle gem train_hard&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Magic! We now have a brand new directory with all of our necessary files to create a gem.&lt;/p&gt;
+
+&lt;h2 id=&quot;start-with-the-entry-point&quot;&gt;3. Start with the entry point&lt;/h2&gt;
+
+&lt;p&gt;In our &lt;code&gt;bin&lt;/code&gt; directory is where we want to encapsulate all of our code into a simple call to execute our program. It seems to be best practice not to place logic in this directory. I added &lt;code&gt;#!/usr/bin/env ruby&lt;/code&gt; to tell the interpreter that this is a ruby file. I also added &lt;code&gt;require &#39;./lib/train_hard&#39;&lt;/code&gt; since we will be needing our &lt;code&gt;cli.rb&lt;/code&gt; class to run the file.&lt;/p&gt;
+
+&lt;p&gt;In our &lt;code&gt;lib&lt;/code&gt; directory is where the meat of the program lies. We have a file called &lt;code&gt;train_hard.rb&lt;/code&gt; that is responsible for loading all the required files including our &lt;code&gt;nokogiri&lt;/code&gt; gem and &lt;code&gt;open-uri&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;stub-out-the-interface&quot;&gt;4. Stub out the interface&lt;/h2&gt;
+
+&lt;p&gt;Our program should start just by running &lt;code&gt;./bin/train_hard&lt;/code&gt; command. Inside our bin/train_hard file we should only have code that looks like this to encapsulate our logic and run our program&lt;/p&gt;
+&lt;div class=&quot;message&quot;&gt;
+#!/usr/bin/env ruby&lt;br /&gt;
+
+require &quot;bundler/setup&quot;&lt;br /&gt;
+require &quot;train_hard&quot;&lt;br /&gt;
+
+TrainHard::CLI.new.start
+&lt;/div&gt;
+
+&lt;p&gt;Our first method that is going to be run in our CLI is our &lt;code&gt;display_menu&lt;/code&gt; method which displays a menu for the user to choose which muscle group they would like exercises for. For now, we are going to hard-code our method just to be able to have a visualization of what the program will look like before it becomes real. For example
+&lt;code&gt;puts &quot;Which muscle group are you training today? (enter number):&quot;&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;
+def display_menu&lt;br /&gt;
+  puts &quot;Which muscle group are you training today?:&quot;&lt;br /&gt;
+  puts &amp;lt;&amp;lt;-DOC&lt;br /&gt;
+  1. Chest&lt;br /&gt;
+  2. Back&lt;br /&gt;
+  3. Legs&lt;br /&gt;
+  4. Shoulders&lt;br /&gt;
+  5. Abs&lt;br /&gt;
+  6. Arms&lt;br /&gt;
+    DOC&lt;br /&gt;
+   end
+ &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s do the same for our &lt;code&gt;pick&lt;/code&gt; method, which will &lt;code&gt;gets&lt;/code&gt; from a user to enter the number which they would like to train, then based on that number display that muscle’s exercises. Example:&lt;br /&gt;
+&lt;code&gt;
+  def pick&lt;br /&gt;
+    input = nil&lt;br /&gt;
+    while input != &quot;exit&quot;&lt;br /&gt;
+    puts &quot;Enter number of the muscle you would like to train or type menu to display menu:&quot; &lt;br /&gt;
+    input = gets.strip &lt;br /&gt;
+      case input &lt;br /&gt;
+      when &quot;1&quot; &lt;br /&gt;
+      puts &quot;Exercises for 1&quot; &lt;br /&gt;
+      etc...
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now that we have our code stubbed lets start actually programming!&lt;/p&gt;
+
+&lt;h2 id=&quot;start-making-things-real-discover-objects-program&quot;&gt;5. Start making things real. Discover objects. PROGRAM.&lt;/h2&gt;
+
+&lt;p&gt;The fun part! The first thing we have to do is figure out what exactly a “muscle” consists of, and what our &lt;code&gt;muscle class&lt;/code&gt; is going to do for us. 
+What is a “muscle” ?
+What is an “exercise” ?
+1. A muscle has a name 
+2. A muscle has many exercises.
+3. An exercise belongs to a muscle.
+These can be represented here in &lt;code&gt;class Muscle&lt;/code&gt;: &lt;code&gt;attr_accessor :name, :exercises&lt;/code&gt;.&lt;br /&gt;
+&lt;code&gt; class Exercise &lt;/code&gt; &lt;br /&gt;
+&lt;code&gt; attr_accessor :name, :muscle &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Next we want to be able to build a muscle object by scraping it off of a website. Our goal is to find all the muscles we want to include and for each muscle, create a muscle instance. To do this we are going to need a separate &lt;code&gt;Scaper&lt;/code&gt; class, since a muscle class’s responsibility is to create instances of muscles, not scrape information. In our scraper class we are going to define a &lt;code&gt;get_page&lt;/code&gt; method and setup our &lt;code&gt;Nokogiri&lt;/code&gt; with our index url. Read more about Nokogiri and open-uri &lt;a href=&quot;http://ruby.bastardsbook.com/chapters/html-parsing/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Our scraper is going to be split into 2 parts. First we will want to scrape the index page for all the muscles that are available. Then we will want to dive deeper and scrape the exercises within those muscle pages. So our first method will just scrape the index page for all the muscle titles, get just the text from those titles and push those strings into an array. Here is the code to accomplish this: &lt;code&gt;self.get_page.css(&#39;.muscle-pagination li&#39;)[0].text,&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Here we can see that we are calling the get_page method within &lt;code&gt;scrape_muscles_index&lt;/code&gt; to parse the HTML page, then retrieve the specific text from the HTML and push that string into an array. We will be doing the same thing for the exercises, but since there are a lot of exercises we need to add another process.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;self.get_page.css(&#39;.exerciseName h3 a&#39;).collect {|exercise| exercise.text.strip!}&lt;/code&gt; Here we are collecting all of the exercises listed on the page (just the text), then using the &lt;code&gt;strip!&lt;/code&gt; method to remove any trailing and leading whitespace, then push that array of strings into a separate array.&lt;/p&gt;
+
+&lt;p&gt;Next after we gather our raw data we are going to need to create objects out of them. Let’s start with muscles. Our muscles are an array of strings. We need to take each muscle from that array and instantiate it into an object, then push that new muscle instance into a class constant called &lt;code&gt;@@all&lt;/code&gt;. this is where all of our muscles will reside so we can reference them later. Going back to instantiating objects, like we learned earlier, A muscle has many exercises, so in our &lt;code&gt;initialtize&lt;/code&gt; method we are going to set an instance variable &lt;code&gt;@exercises&lt;/code&gt; set to equal an empty array. In other words every new muscle object that gets born will have an empty “pocket” for exercises to be added to it. Then we will push &lt;code&gt;self&lt;/code&gt; into &lt;code&gt;@@all&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;After our muscle objects are instantiated and pushed into that &lt;code&gt;@@all&lt;/code&gt; we are going to create make and add the exercises as objects using our scrape exercises scraper method. Let’s do this by reference each index in &lt;code&gt;@@all&lt;/code&gt; like so: &lt;code&gt;@@all[0].exercises = SCRAPED_EXERCISES[0].collect {|exercise| TrainHard::Exercise.new(exercise, @@all[0])}&lt;/code&gt;&amp;lt;/br&amp;gt;
+Let’s break this code down. First we are referencing the first muscle that has been instantiated in &lt;code&gt;@@all[0]&lt;/code&gt; which happens to be Abs. Then we are calling the &lt;code&gt;.exercise =&lt;/code&gt; method created by our &lt;code&gt;attr_accessor :exercise&lt;/code&gt; and setting it equal to &lt;code&gt;SCRAPED_EXERCISES[0]&lt;/code&gt; which is reference our first array of arrays which contains a bunch of our exercises as strings. For each of those exercises we are instantiating a new exercise object and setting its name equal to the exercise and its muscle as the second argument equal to its corresponding muscle &lt;code&gt;#@@all[0]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And that’s it! The bulk of our design structure is done. We now have muscle objects that have many exercises, and exercise objects that belong to muscles. We can implement this structure within the CLI and have the user obtain real object data if we wanted to add more features down the line.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+
+</feed>
