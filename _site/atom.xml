@@ -4,7 +4,7 @@
  <title>Lanyon</title>
  <link href="http://lanyon.getpoole.com/atom.xml" rel="self"/>
  <link href="http://lanyon.getpoole.com/"/>
- <updated>2016-02-12T15:02:57-05:00</updated>
+ <updated>2016-02-18T00:05:42-05:00</updated>
  <id>http://lanyon.getpoole.com</id>
  <author>
    <name>Mark Otto</name>
@@ -21,7 +21,7 @@
   My first Ruby CLI Gem: Train Hard
 &lt;/div&gt;
 
-&lt;p&gt;My idea for this gem is fairly straightforward. It is a command line interface that scrapes from a website that lists exercises by muscle groups. Each muscle group has exercises, and each exercise has a rating. Later in the process I would like to add functionality that displays only exercises based on a certain rating criteria.&lt;/p&gt;
+&lt;p&gt;My idea for this gem is fairly straightforward. It is a command line interface that scrapes from a website that lists exercises by muscle groups. Each muscle has many exercises. Each exercise belongs to a muscle.&lt;/p&gt;
 
 &lt;p&gt;The first order of business is to bust out the notepad and organize the project into small bite sized pieces. Here’s what I got (shoutout to Avi ;))&lt;/p&gt;
 
@@ -100,7 +100,7 @@ def display_menu&lt;br /&gt;
 
 &lt;p&gt;Now that we have our code stubbed lets start actually programming!&lt;/p&gt;
 
-&lt;h2 id=&quot;start-making-things-real-discover-objects-program&quot;&gt;5. Start making things real. Discover objects. PROGRAM.&lt;/h2&gt;
+&lt;h2 id=&quot;start-making-things-real-discover-objects-program&quot;&gt;5. Start making things real. Discover objects. PROGRAM&lt;/h2&gt;
 
 &lt;p&gt;The fun part! The first thing we have to do is figure out what exactly a “muscle” consists of, and what our &lt;code&gt;muscle class&lt;/code&gt; is going to do for us. 
 What is a “muscle” ?

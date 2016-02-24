@@ -7,7 +7,7 @@ title: Building a CLI Gem
   My first Ruby CLI Gem: Train Hard
 </div>
 
-My idea for this gem is fairly straightforward. It is a command line interface that scrapes from a website that lists exercises by muscle groups. Each muscle group has exercises, and each exercise has a rating. Later in the process I would like to add functionality that displays only exercises based on a certain rating criteria.
+My idea for this gem is fairly straightforward. It is a command line interface that scrapes from a website that lists exercises by muscle groups. Each muscle has many exercises. Each exercise belongs to a muscle.
 
 The first order of business is to bust out the notepad and organize the project into small bite sized pieces. Here's what I got (shoutout to Avi ;))
 
@@ -39,7 +39,7 @@ In our <code>bin</code> directory is where we want to encapsulate all of our cod
 
 In our <code>lib</code> directory is where the meat of the program lies. We have a file called <code>train_hard.rb</code> that is responsible for loading all the required files including our <code>nokogiri</code> gem and <code>open-uri</code>.
 
-##4. Stub out the interface
+## 4. Stub out the interface
 
 Our program should start just by running <code>./bin/train_hard</code> command. Inside our bin/train_hard file we should only have code that looks like this to encapsulate our logic and run our program 
 <div class = "message">
@@ -82,7 +82,7 @@ def display_menu<br />
 
 Now that we have our code stubbed lets start actually programming!
 
-##5. Start making things real. Discover objects. PROGRAM.
+## 5. Start making things real. Discover objects. PROGRAM
 
 The fun part! The first thing we have to do is figure out what exactly a "muscle" consists of, and what our <code>muscle class</code> is going to do for us. 
 What is a “muscle” ?
