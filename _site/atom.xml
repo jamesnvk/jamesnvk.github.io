@@ -4,13 +4,58 @@
  <title>Lanyon</title>
  <link href="http://lanyon.getpoole.com/atom.xml" rel="self"/>
  <link href="http://lanyon.getpoole.com/"/>
- <updated>2016-02-18T00:05:42-05:00</updated>
+ <updated>2016-03-31T14:48:34-04:00</updated>
  <id>http://lanyon.getpoole.com</id>
  <author>
    <name>Mark Otto</name>
    <email>markdotto@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Sinatra ActiveRecord MVC Application</title>
+   <link href="http://lanyon.getpoole.com/2016/03/27/sinatra-ar-mvc-app/"/>
+   <updated>2016-03-27T00:00:00-04:00</updated>
+   <id>http://lanyon.getpoole.com/2016/03/27/sinatra-ar-mvc-app</id>
+   <content type="html">&lt;p&gt;I’ve learned a ton since I built my first CLI gem in my last project. Flatiron School’s Full Stack Dev curriculum really knows how to keep us just on the edge of our knowledge - Always challenging and I’m absolutely addicted. This project’s requirements are as follows:&lt;/p&gt;
+
+&lt;h2 id=&quot;requirements&quot;&gt;REQUIREMENTS&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Build an MVC Sinatra Application.&lt;/li&gt;
+  &lt;li&gt;Use ActiveRecord with Sinatra.&lt;/li&gt;
+  &lt;li&gt;Use Multiple Models.&lt;/li&gt;
+  &lt;li&gt;Use at least one has_many relationship&lt;/li&gt;
+  &lt;li&gt;Must have user accounts. The user that created the content should be the only person who can modify that content&lt;/li&gt;
+  &lt;li&gt;Models must have validations to ensure that bad data isn’t created&lt;/li&gt;
+  &lt;li&gt;Any validation failures must be shown to user with an error message&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I decided I wanted to build a game collection app that keeps track of a users games. When I was younger (the days before Steam was a thing) I had a ton of games on PC/DVD, SNES, N64 and no where to keep track of them! My first task is to determine file structure, more importantly.. which gems I will be needing to create this app. &lt;img src=&quot;/assets/ss1.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next let’s build out the models. A User &lt;code&gt;has many&lt;/code&gt; games and a Game &lt;code&gt;belongs to&lt;/code&gt; a user. We’re being taught that starting out with the models first is a great pattern for building web apps from scratch. This way we can directly interact with our data first before committing to building out the larger portion of the framework like the controllers and routing. We can always come back to add attributes or functionality to the models in the future as well.&lt;/p&gt;
+
+&lt;p&gt;Now let’s setup our database. We have to create 2 tables, one for users and one for games. We’re going to run &lt;code&gt;rake db:create_migration NAME=create_users&lt;/code&gt; and do the same for games. Our code in our migration file will look like this: &lt;img src=&quot;/assets/ss2.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We’re creating 3 columns for our 3 attributes: Games have a name, year, and a foreign key: &lt;code&gt;user_id&lt;/code&gt; since games &lt;code&gt;belong_to&lt;/code&gt; a User. We’ll do the same for Users then run &lt;code&gt;rake db:migrate&lt;/code&gt; to execute the changes. After our tables are setup we’ll need to add our 2 models to our app. &lt;img src=&quot;/assets/ss3.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;With our tables and models setup and migrated our Users and Games are now associated. Remember that the model that has belongs_to will always have the foreign key. In this case, our Game model has the foreign key &lt;code&gt;user_id&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let’s start with the User class. We’re &lt;code&gt;include&lt;/code&gt;ing instance method &lt;code&gt;slug&lt;/code&gt; that will take a user’s username, downcase it, and replace all spaces with dashes. That’s the beauty of ruby.. we can just look at the method and know exactly what it does. The purpose of this method is to have our URLs remain RESTful. Next we’re &lt;code&gt;extend&lt;/code&gt;ing our class method &lt;code&gt;find_by_slug&lt;/code&gt; that will give us the ability to find a user by their slugified name.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;has_secure_password&lt;/code&gt; is a macro given to us by ActiveRecord. However in order to use this we will need to have &lt;code&gt;sessions&lt;/code&gt; enabled and also our gem &lt;code&gt;bcrypt&lt;/code&gt; that we installed earlier. &lt;code&gt;Bcrypt&lt;/code&gt; gives us the ability to store a salted and hashed version of a user’s password in a database column called &lt;code&gt;password_digest&lt;/code&gt;. Let’s add that now.  &lt;img src=&quot;/assets/ss4.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To wrap up user auth we are given a method &lt;code&gt;authenticate&lt;/code&gt; that is provided to us by the Bcrypt gem, which takes a string as an argument. If the string password matches the string password in the password digest, it will return the user object, otherwise it will return false. &lt;img src=&quot;/assets/ss5.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We ensure that bad data isn’t being passed with our helper methods &lt;code&gt;logged_in?&lt;/code&gt; which evaluates the truthiness of a session[:id] and &lt;code&gt;empty_field?&lt;/code&gt; which ensures that a user fills out all form fields when logging in or signing up. Since the our session hash persists across our URLs, it is a very useful tool allowing a web app to persist a user across the entire scope of the application. In other words, the user does not have to log in every time they request a new page. This introduces “state” in an otherwise stateless web. Check out all of my controller routes and actions on my full &lt;a href=&quot;https://github.com/jamesnvk/game-collection-sinatra-app&quot;&gt;github repo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For our last requirement I decided to use the flash gem found &lt;a href=&quot;https://github.com/SFEley/sinatra-flash&quot;&gt;here&lt;/a&gt;. This cool little gem adds an error message for the user when they fail a validation.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I learned a ton about how the web operates doing this project. It was a lot of work and I’m glad that I’m learning a basically smaller version of Rails before moving onto the behemoth. Feel free to send me an email jamesnovak90@gmail.com I’d love to hear from you!&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Building a CLI Gem</title>

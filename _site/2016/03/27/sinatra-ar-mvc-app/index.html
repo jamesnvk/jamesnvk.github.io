@@ -1,0 +1,173 @@
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      // james novak  
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>Welcome to my blog :)</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+    
+
+    <!--<a class="sidebar-nav-item" href="/archive/v1.0.0.zip">Download</a> 
+    <a class="sidebar-nav-item" href="">GitHub project</a> -->
+ 
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">// james_novak</a>
+            <!--<small>A Jekyll theme</small>-->
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Sinatra ActiveRecord MVC Application</h1>
+  <span class="post-date">27 Mar 2016</span>
+  <p>I’ve learned a ton since I built my first CLI gem in my last project. Flatiron School’s Full Stack Dev curriculum really knows how to keep us just on the edge of our knowledge - Always challenging and I’m absolutely addicted. This project’s requirements are as follows:</p>
+
+<h2 id="requirements">REQUIREMENTS</h2>
+<ul>
+  <li>Build an MVC Sinatra Application.</li>
+  <li>Use ActiveRecord with Sinatra.</li>
+  <li>Use Multiple Models.</li>
+  <li>Use at least one has_many relationship</li>
+  <li>Must have user accounts. The user that created the content should be the only person who can modify that content</li>
+  <li>Models must have validations to ensure that bad data isn’t created</li>
+  <li>Any validation failures must be shown to user with an error message</li>
+</ul>
+
+<p>I decided I wanted to build a game collection app that keeps track of a users games. When I was younger (the days before Steam was a thing) I had a ton of games on PC/DVD, SNES, N64 and no where to keep track of them! My first task is to determine file structure, more importantly.. which gems I will be needing to create this app. <img src="/assets/ss1.png" alt="Alt text" /></p>
+
+<p>Next let’s build out the models. A User <code>has many</code> games and a Game <code>belongs to</code> a user. We’re being taught that starting out with the models first is a great pattern for building web apps from scratch. This way we can directly interact with our data first before committing to building out the larger portion of the framework like the controllers and routing. We can always come back to add attributes or functionality to the models in the future as well.</p>
+
+<p>Now let’s setup our database. We have to create 2 tables, one for users and one for games. We’re going to run <code>rake db:create_migration NAME=create_users</code> and do the same for games. Our code in our migration file will look like this: <img src="/assets/ss2.png" alt="Alt text" /></p>
+
+<p>We’re creating 3 columns for our 3 attributes: Games have a name, year, and a foreign key: <code>user_id</code> since games <code>belong_to</code> a User. We’ll do the same for Users then run <code>rake db:migrate</code> to execute the changes. After our tables are setup we’ll need to add our 2 models to our app. <img src="/assets/ss3.png" alt="Alt text" /></p>
+
+<p>With our tables and models setup and migrated our Users and Games are now associated. Remember that the model that has belongs_to will always have the foreign key. In this case, our Game model has the foreign key <code>user_id</code>.</p>
+
+<p>Let’s start with the User class. We’re <code>include</code>ing instance method <code>slug</code> that will take a user’s username, downcase it, and replace all spaces with dashes. That’s the beauty of ruby.. we can just look at the method and know exactly what it does. The purpose of this method is to have our URLs remain RESTful. Next we’re <code>extend</code>ing our class method <code>find_by_slug</code> that will give us the ability to find a user by their slugified name.</p>
+
+<p><code>has_secure_password</code> is a macro given to us by ActiveRecord. However in order to use this we will need to have <code>sessions</code> enabled and also our gem <code>bcrypt</code> that we installed earlier. <code>Bcrypt</code> gives us the ability to store a salted and hashed version of a user’s password in a database column called <code>password_digest</code>. Let’s add that now.  <img src="/assets/ss4.png" alt="Alt text" /></p>
+
+<p>To wrap up user auth we are given a method <code>authenticate</code> that is provided to us by the Bcrypt gem, which takes a string as an argument. If the string password matches the string password in the password digest, it will return the user object, otherwise it will return false. <img src="/assets/ss5.png" alt="Alt text" /></p>
+
+<p>We ensure that bad data isn’t being passed with our helper methods <code>logged_in?</code> which evaluates the truthiness of a session[:id] and <code>empty_field?</code> which ensures that a user fills out all form fields when logging in or signing up. Since the our session hash persists across our URLs, it is a very useful tool allowing a web app to persist a user across the entire scope of the application. In other words, the user does not have to log in every time they request a new page. This introduces “state” in an otherwise stateless web. Check out all of my controller routes and actions on my full <a href="https://github.com/jamesnvk/game-collection-sinatra-app">github repo</a>.</p>
+
+<p>For our last requirement I decided to use the flash gem found <a href="https://github.com/SFEley/sinatra-flash">here</a>. This cool little gem adds an error message for the user when they fail a validation.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I learned a ton about how the web operates doing this project. It was a lot of work and I’m glad that I’m learning a basically smaller version of Rails before moving onto the behemoth. Feel free to send me an email jamesnovak90@gmail.com I’d love to hear from you!</p>
+
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2016/01/27/jamesnovak-cli-gem/">
+            Building a CLI Gem
+            <small>27 Jan 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>
