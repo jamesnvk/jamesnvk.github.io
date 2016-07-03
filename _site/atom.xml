@@ -4,13 +4,53 @@
  <title>Lanyon</title>
  <link href="http://lanyon.getpoole.com/atom.xml" rel="self"/>
  <link href="http://lanyon.getpoole.com/"/>
- <updated>2016-06-04T14:00:30-04:00</updated>
+ <updated>2016-07-02T22:36:29-04:00</updated>
  <id>http://lanyon.getpoole.com</id>
  <author>
    <name>Mark Otto</name>
    <email>markdotto@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>RESTful Rails Blog with OAuth</title>
+   <link href="http://lanyon.getpoole.com/2016/07/02/restful-rails-blog-with-oauth/"/>
+   <updated>2016-07-02T00:00:00-04:00</updated>
+   <id>http://lanyon.getpoole.com/2016/07/02/restful-rails-blog-with-oauth</id>
+   <content type="html">&lt;p&gt;I decided to build a fully functional blog application from the ground up for my Rails assessment project at Flatiron School. It was the biggest challenge I’ve faced since starting my journey into programming. I feel like I have come so far in the world of programming, yet at the same time barely scratching the surface. That is awesome. Steep learning curves excite me.&lt;/p&gt;
+
+&lt;p&gt;One of the most challenging sprints of this project was building out the comments system. My User model looks like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ss6.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Post model:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ss8.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;and my comment model acting as a join:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ss7.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;My problem was that I needed to be able to add a comment - from a user - to a particular post. I spent a lot of time trying to create a comment through the posts controller until I realized that even though my comments model was a join table, I still needed to build the comments controller to separate concerns. Even though a comment belongs to a post, a post controller should not have the responsibility of creating a comment. A comment is still a valid object in my program that deserves attention just as much as a User or Post.&lt;/p&gt;
+
+&lt;p&gt;Here’s how my comments controller turned out:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ss9.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;My next challenging sprint was the implementation of Oauth using facebook as a provider. &lt;a href=&quot;https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview&quot;&gt;This guide&lt;/a&gt; is an excellent step by step walkthrough on how to implement Oauth via facebook. One important thing to note about this was that I had trouble with my APP ID consumer key and secret key. A bug prevented me from being able to set my keys through my environment, so I had to add both keys to my project. It is extremely important that these keys, especially the secret key, is not in public view, ie. in the git source code.&lt;/p&gt;
+
+&lt;p&gt;To take care of this problem I added a file in my &lt;code&gt;config/initializers&lt;/code&gt; folder that contained both keys as constants, then added that file to my .gitignore file so it would not get uploaded as public source code on github. I realize that this may not be an optimal solution as all code is still uploaded to a server.&lt;/p&gt;
+
+&lt;p&gt;My last sprint that I wanted to discuss was building a REST infrastructure. A design decision I made early on was to rename the &lt;code&gt;PostsController&lt;/code&gt; to &lt;code&gt;InjuriesController&lt;/code&gt; because I wanted my routes to be &lt;code&gt;/injuries&lt;/code&gt;, &lt;code&gt;/injuries/new&lt;/code&gt; etc.. but quickly realized that that design decision may be confusing as the app gets larger. I’ve learned that it is usually better to err on the side of convention when it comes to Rails development. So instead, I kept &lt;code&gt;PostsController&lt;/code&gt; and passed an option to &lt;code&gt;resources&lt;/code&gt; in my routes file:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ss10.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;i&gt;I had an awesome time and learned so much while building this app. If you like what you read you can check out my previous posts listed in my &lt;a href=&quot;https://jamesnvk.github.io/archives/&quot;&gt;archive&lt;/a&gt;. Or you can check out the full source code for this project on github &lt;a href=&quot;https://github.com/jamesnvk/injury-door&quot;&gt;here&lt;/a&gt;&lt;/i&gt;&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Why software?</title>
