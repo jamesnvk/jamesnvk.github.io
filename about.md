@@ -11,6 +11,6 @@ I am a Full Stack Engineer with a primary interest in Ruby on Rails and Javascri
 
 Check out my Github: <a href="https://github.com/jamesnvk" target="_blank">here</a>
 
-Thanks for reading my blog. If you liked what you read please send me an email jamesnovak90@gmail.com and tell me what you think!
+Thanks for reading my blog. If you liked what you read please send me an email jamesnovak90 [at] gmail [dot] com and tell me what you think!
 
 
