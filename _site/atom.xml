@@ -4,7 +4,7 @@
  <title>Lanyon</title>
  <link href="http://lanyon.getpoole.com/atom.xml" rel="self"/>
  <link href="http://lanyon.getpoole.com/"/>
- <updated>2016-09-13T23:54:21-04:00</updated>
+ <updated>2016-09-14T00:05:29-04:00</updated>
  <id>http://lanyon.getpoole.com</id>
  <author>
    <name>Mark Otto</name>
@@ -41,6 +41,9 @@
 
 &lt;p&gt;What this now allows us to do is inject our object’s properties using that mustache syntax into our DOM via our compiled template!&lt;/p&gt;
 
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;i&gt;Getting the opportunity to build this was an amazing learning experience. This was definitely one of the most challenging parts of the curriculum for me. If you like what you read you can check out my previous posts listed in my &lt;a href=&quot;https://jamesnvk.github.io/archives/&quot;&gt;archive&lt;/a&gt;. Or you can check out the full source code for this project on github &lt;a href=&quot;https://github.com/jamesnvk/pinterest&quot;&gt;here&lt;/a&gt;&lt;/i&gt;&lt;/p&gt;
 </content>
  </entry>
  

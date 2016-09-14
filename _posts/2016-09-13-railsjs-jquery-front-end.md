@@ -27,4 +27,6 @@ You're probably wondering what the `.template` method is on our Comment. First, 
 
 What this now allows us to do is inject our object's properties using that mustache syntax into our DOM via our compiled template!
 
+______________
 
+<i>Getting the opportunity to build this was an amazing learning experience. This was definitely one of the most challenging parts of the curriculum for me. If you like what you read you can check out my previous posts listed in my [archive](https://jamesnvk.github.io/archives/). Or you can check out the full source code for this project on github [here](https://github.com/jamesnvk/pinterest)</i>
