@@ -98,44 +98,36 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2016/07/02/restful-rails-blog-with-oauth/">
-        RESTful Rails Blog with OAuth
+      <a href="/2016/09/13/railsjs-jquery-front-end/">
+        RailsJS jQuery Front End - Handlebars
       </a>
     </h1>
 
-    <span class="post-date">02 Jul 2016</span>
+    <span class="post-date">13 Sep 2016</span>
 
-    <p>I decided to build a fully functional blog application from the ground up for my Rails assessment project at Flatiron School. It was the biggest challenge I’ve faced since starting my journey into programming. I feel like I have come so far in the world of programming, yet at the same time barely scratching the surface. That is awesome. Steep learning curves excite me.</p>
+    <p>It’s been a while since my last blog post but I’m back at it again with another new app! This time I built a Pinterest style app utilizing javascript/jQuery and HandlebarsJS to handle the front end while Rails took care of the back end. If you’re unfamiliar with Handlebars I recommend you take a quick look at the <a href="http://handlebarsjs.com/" target="_blank">documentation</a> before proceeding.</p>
 
-<p>One of the most challenging sprints of this project was building out the comments system. My User model looks like this:</p>
+<p>A high level overview of how Handlebars works is that it basically gives us templates that we insert into our HTML pages that we want to use our API with. Then we can use javascript to call and insert objects from the database directly into the DOM without a page refresh. Lets start by taking a look at our template in our HTML:</p>
 
-<p><img src="/assets/ss6.png" alt="Alt text" /></p>
+<p><img src="/assets/ss12.png" alt="Alt text" /></p>
 
-<p>Post model:</p>
+<p>We can see here that this looks almost like an ERB file. In fact, this is basically ERB for javascript. Since we are still in an actual ERB file we can still use ruby <code class="highlighter-rouge">&lt;%= current_user.name %&gt;</code> and javascript <code class="highlighter-rouge">[[content]]</code>* at the same time. Pretty cool.</p>
 
-<p><img src="/assets/ss8.png" alt="Alt text" /></p>
+<p>*<i>Markdown doesnt like the curly braces so we have to use brackets</i></p>
 
-<p>and my comment model acting as a join:</p>
+<p>Next lets create a constructor in javascript.</p>
 
-<p><img src="/assets/ss7.png" alt="Alt text" /></p>
+<p><img src="/assets/ss11.png" alt="Alt text" /></p>
 
-<p>My problem was that I needed to be able to add a comment - from a user - to a particular post. I spent a lot of time trying to create a comment through the posts controller until I realized that even though my comments model was a join table, I still needed to build the comments controller to separate concerns. Even though a comment belongs to a post, a post controller should not have the responsibility of creating a comment. A comment is still a valid object in my program that deserves attention just as much as a User or Post.</p>
+<p>Here our Comment belongs_to a user and has the attributes id, content, and user_id. After we set this up, next we need to build a function on this prototype that will return the HTML for the page we have our script in.</p>
 
-<p>Here’s how my comments controller turned out:</p>
+<p><img src="/assets/ss13.png" alt="Alt text" /></p>
 
-<p><img src="/assets/ss9.png" alt="Alt text" /></p>
+<p>You’re probably wondering what the <code class="highlighter-rouge">.template</code> method is on our Comment. First, we need to grab the template (an HTML string). Then, if you recall from the documentation we need to <em>compile</em> our HTML string into an actual handlebars template.</p>
 
-<p>My next challenging sprint was the implementation of Oauth using facebook as a provider. <a href="https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview">This guide</a> is an excellent step by step walkthrough on how to implement Oauth via facebook. One important thing to note about this was that I had trouble with my APP ID consumer key and secret key. A bug prevented me from being able to set my keys through my environment, so I had to add both keys to my project. It is extremely important that these keys, especially the secret key, is not in public view, ie. in the git source code.</p>
+<p><img src="/assets/ss14.png" alt="Alt text" /></p>
 
-<p>To take care of this problem I added a file in my <code>config/initializers</code> folder that contained both keys as constants, then added that file to my .gitignore file so it would not get uploaded as public source code on github. I realize that this may not be an optimal solution as all code is still uploaded to a server.</p>
-
-<p>My last sprint that I wanted to discuss was building a REST infrastructure. A design decision I made early on was to rename the <code>PostsController</code> to <code>InjuriesController</code> because I wanted my routes to be <code>/injuries</code>, <code>/injuries/new</code> etc.. but quickly realized that that design decision may be confusing as the app gets larger. I’ve learned that it is usually better to err on the side of convention when it comes to Rails development. So instead, I kept <code>PostsController</code> and passed an option to <code>resources</code> in my routes file:</p>
-
-<p><img src="/assets/ss10.png" alt="Alt text" /></p>
-
-<hr />
-
-<p><i>I had an awesome time and learned so much while building this app. If you like what you read you can check out my previous posts listed in my <a href="https://jamesnvk.github.io/archives/">archive</a>. Or you can check out the full source code for this project on github <a href="https://github.com/jamesnvk/injury-door">here</a></i></p>
+<p>What this now allows us to do is inject our object’s properties using that mustache syntax into our DOM via our compiled template!</p>
 
 
   </div>
