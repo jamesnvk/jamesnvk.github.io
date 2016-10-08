@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en-us">
 
@@ -11,7 +13,7 @@
 
   <title>
     
-      Lanyon &middot; A Jekyll theme
+      // james novak  
     
   </title>
 
@@ -39,7 +41,7 @@
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item">
-    <p>A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.</p>
+    <p>Welcome to my blog :)</p>
   </div>
 
   <nav class="sidebar-nav">
@@ -59,23 +61,13 @@
     
       
         
-      
-    
-      
-        
           <a class="sidebar-nav-item" href="/about/">About</a>
         
       
     
       
-    
-      
         
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/lanyon/about/">About</a>
+          <a class="sidebar-nav-item" href="/archives/">Archive</a>
         
       
     
@@ -86,15 +78,9 @@
       
     
 
-    <a class="sidebar-nav-item" href="/archive/v1.0.0.zip">Download</a>
-    <a class="sidebar-nav-item" href="">GitHub project</a>
-    <span class="sidebar-nav-item">Currently v1.0.0</span>
-  </nav>
-
-  <div class="sidebar-item">
-    <p>
-      &copy; 2016. All rights reserved.
-    </p>
+    <!--<a class="sidebar-nav-item" href="/archive/v1.0.0.zip">Download</a> 
+    <a class="sidebar-nav-item" href="">GitHub project</a> -->
+ 
   </div>
 </div>
 
@@ -105,8 +91,8 @@
       <div class="masthead">
         <div class="container">
           <h3 class="masthead-title">
-            <a href="/" title="Home">Lanyon</a>
-            <small>A Jekyll theme</small>
+            <a href="/" title="Home">// james_novak</a>
+            <!--<small>A Jekyll theme</small>-->
           </h3>
         </div>
       </div>
@@ -116,36 +102,40 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2013/12/31/whats-jekyll/">
-        What's Jekyll?
+      <a href="/2016/10/07/angularjs-spa-rails-api/">
+        AngularJS Single Page Application with Rails API backend
       </a>
     </h1>
 
-    <span class="post-date">31 Dec 2013</span>
+    <span class="post-date">07 Oct 2016</span>
 
-    <p><a href="http://jekyllrb.com">Jekyll</a> is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From <a href="https://github.com/mojombo/jekyll/blob/master/README.markdown">the project’s readme</a>:</p>
+    <p>AngularJS is a JavaScript based front-end framework developed by Google for the purpose of addressing the many challenges that come with single page applications. It follows MVVM (Model-View-ViewModel) as opposed to the classic MVC (Model-View-Controller) architecture that I began learning early in my journey as a software developer.</p>
 
-<blockquote>
-  <p>Jekyll is a simple, blog aware, static site generator. It takes a template directory […] and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.</p>
-</blockquote>
+<p>As part of this project I was tasked with building out dynamic updating of a single field of a resource. Ex: Allow changing of quantity in a shopping cart. This blog post will cover a particular problem I came across while I built this feature out.</p>
 
-<p>It’s an immensely useful tool and one we encourage you to use here with Lanyon.</p>
+<p><code>Angular-xeditable</code> is a bundle of angular directives that allows you to create editable elements. This technique is also known as ‘edit-in-place’. You can view the docs <a href="https://vitalets.github.io/angular-xeditable/" target="_blank">here</a>. This bundle is a great example of why Angular is such a fun and familiar framework, it reminds me of injecting ruby gems into a Rails application.</p>
 
-<p>Find out more by <a href="https://github.com/mojombo/jekyll">visiting the project on GitHub</a>.</p>
+<p>After spending some time in the docs I decided to implement the form.</p>
+
+<p><img src="/assets/ss15.png" alt="Alt text" /></p>
+
+<p>As you can see here we have a simple form that displays the healthcare providers’ location OR if there is no location “empty” inside of a span tag. When the user clicks to edit the form, a text box will pop up with the “location” text inside of it, prompting the user to edit the text.</p>
+
+<p><img src="/assets/ss16.png" alt="Alt text" /> <img src="/assets/ss17.png" alt="Alt text" /></p>
+
+<p>After “save” is clicked, instead of utilizing <code>ng-submit</code> we are using the <code>onaftersave</code> directive which calls my <code>editProvider</code> function in my controller with the passed in provider ID as a parameter. The function then calls on my provider service to send a PATCH with the json data for that specific provider and updates the database. Now at this point you’re probably thinking this is way too straightforward… there has to be a catch. You are correct!</p>
+
+<p>The main challenge here was looking up the correct provider object by id. Since our application is a single page, all of the providers are listed through an array, which we call <code>ng-repeat</code> on to iterate and display each provider’s data. Throw in filters and different search results and the server has no idea what the correct object is without its specific id if a user wanted to edit a provider.</p>
+
+<p><img src="/assets/ss18.png" alt="Alt text" /></p>
+
+<p>Here I created a lookup object. It sets a key id for each provider’s id in the array to the provider object itself as the value. To grab the object, I then set a variable <code>provider</code> equal to accessing the <code>lookup</code> object by passing in the id we obtained from the view. Then simply pass the <code>provider</code> variable into our service and the correct provider is updated!</p>
+
+<hr />
+
+<p><i>I learned so much about modern web application development from building this SPA. This was definitely the most challenging part of the curriculum for me. If you like what you read you can check out my previous posts listed in my <a href="https://jamesnvk.github.io/archives/">archive</a>. Or you can check out the full source code for this project on github <a href="https://github.com/jamesnvk/openhealth">here</a></i></p>
 
   </div>
-  
-</div>
-
-<div class="pagination">
-  
-    <span class="pagination-item older">Older</span>
-  
-  
-    
-      <a class="pagination-item newer" href="/">Newer</a>
-    
-  
 </div>
 
 
