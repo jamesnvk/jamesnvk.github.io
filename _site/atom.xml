@@ -4,13 +4,28 @@
  <title>Lanyon</title>
  <link href="http://lanyon.getpoole.com/atom.xml" rel="self"/>
  <link href="http://lanyon.getpoole.com/"/>
- <updated>2016-10-07T22:27:12-04:00</updated>
+ <updated>2016-10-14T17:56:26-04:00</updated>
  <id>http://lanyon.getpoole.com</id>
  <author>
    <name>Mark Otto</name>
    <email>markdotto@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Graduating Flatiron School and the Future</title>
+   <link href="http://lanyon.getpoole.com/2016/10/14/graduating-flatiron-school/"/>
+   <updated>2016-10-14T00:00:00-04:00</updated>
+   <id>http://lanyon.getpoole.com/2016/10/14/graduating-flatiron-school</id>
+   <content type="html">&lt;p&gt;As I wrapped up my final project it began to dawn on me that I am soon going to be in the workforce starting a new career as a professional developer. I have come from learning how to set simple variables to making complex ajax requests through APIs in front-end frameworks. The curriculum did an excellent job at consistently pushing the edge of my knowledge. I couldn’t have asked for a more fast-paced and challenging experience. Even though the online curriculum is considered self-paced, I felt that that actually gave me an advantage over the in-person experience. Yes, I was still drinking through the firehose, but it gave me an opportunity to pause and reflect on particular concepts that were giving me a hard time. I learned how to go outside of the ‘walled garden’ of the platform and look up explanations from different sources and experienced developers that taught me different ways of doing things.&lt;/p&gt;
+
+&lt;p&gt;I learned that, just as in life, learning in this profession is never ending. A developer with a thirst to learn will always be in high demand in a market with emerging technologies seemingly every 2-3 years. I learned that ‘imposter syndrome’ is a very real thing. There were many times where I felt like I ‘wasnt smart enough’ or I felt like it was ‘too difficult for me to learn’. Yes, programming is difficult.. but that’s why it is in high demand. There are not many people that have the skillset that we do, and I’d like to thank Flatiron for giving me the opportunity to show the world and give back what I learned by providing all the value I possibly can to whichever company I decide to work for in the future. There have been so many ups and downs when I started this journey almost exactly one year ago to this day and I have not regretted a single moment.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;If you like what you read you can check out my previous posts listed in my &lt;a href=&quot;https://jamesnvk.github.io/archives/&quot;&gt;archive&lt;/a&gt;. Or you can check out the full source code for my latest project on github &lt;a href=&quot;https://github.com/jamesnvk/openhealth&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>AngularJS Single Page Application with Rails API backend</title>
