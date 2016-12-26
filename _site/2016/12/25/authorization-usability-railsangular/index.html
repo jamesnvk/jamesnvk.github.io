@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en-us">
 
@@ -11,7 +13,7 @@
 
   <title>
     
-      What's Jekyll? &middot; Lanyon
+      // james novak  
     
   </title>
 
@@ -39,7 +41,7 @@
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item">
-    <p>A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.</p>
+    <p>Welcome to my blog :)</p>
   </div>
 
   <nav class="sidebar-nav">
@@ -64,17 +66,21 @@
       
     
       
+        
+          <a class="sidebar-nav-item" href="/archives/">Archive</a>
+        
+      
+    
+      
+    
+      
+        
+      
     
 
-    <a class="sidebar-nav-item" href="/archive/v1.0.0.zip">Download</a>
-    <a class="sidebar-nav-item" href="">GitHub project</a>
-    <span class="sidebar-nav-item">Currently v1.0.0</span>
-  </nav>
-
-  <div class="sidebar-item">
-    <p>
-      &copy; 2016. All rights reserved.
-    </p>
+    <!--<a class="sidebar-nav-item" href="/archive/v1.0.0.zip">Download</a> 
+    <a class="sidebar-nav-item" href="">GitHub project</a> -->
+ 
   </div>
 </div>
 
@@ -85,25 +91,26 @@
       <div class="masthead">
         <div class="container">
           <h3 class="masthead-title">
-            <a href="/" title="Home">Lanyon</a>
-            <small>A Jekyll theme</small>
+            <a href="/" title="Home">// james_novak</a>
+            <!--<small>A Jekyll theme</small>-->
           </h3>
         </div>
       </div>
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">What's Jekyll?</h1>
-  <span class="post-date">31 Dec 2013</span>
-  <p><a href="http://jekyllrb.com">Jekyll</a> is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From <a href="https://github.com/mojombo/jekyll/blob/master/README.markdown">the project’s readme</a>:</p>
+  <h1 class="post-title">Managing Authorization - and Usability - in Rails/AngularJS Part 1</h1>
+  <span class="post-date">25 Dec 2016</span>
+  <p>I am currently helping build an employee training application for a busy restaurant with two other developers on a Rails backend with an AngularJS front end. So far this project has allowed me to leverage my experience in management to help offer insight on effective and efficient ways to help train the staff of a company with high turnover. It has also got me thinking more deeply about authorization and how managers will be interacting with the application.</p>
 
-<blockquote>
-  <p>Jekyll is a simple, blog aware, static site generator. It takes a template directory […] and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.</p>
-</blockquote>
+<p>An easy UI allows both management and their employees to focus on what’s important, instead of being bogged down by tasks or questions that are repeatedly asked about. I intend to read the book <em>Don’t Make Me Think: A Common Sense Approach to Web Usability</em> by Steve Krug as it seems to be highly recommended. The title makes sense for the project. A restaurant is a fast paced environment where employees simply <em>do not have the time</em> to think. They simply just <em>do</em>. Making the application as simple and easy to use is our primary goal. On to authorization.</p>
 
-<p>It’s an immensely useful tool and one we encourage you to use here with Lanyon.</p>
+<p>I decided to go with CanCan for authorization. CanCan is a Ruby library that restricts what resources and their actions a given user is allowed to access. These permissions are defined in a single location - the <code>Ability</code> class. CanCan also requires some type of current_user. We have implemented Devise to handle all of our authentication.</p>
 
-<p>Find out more by <a href="https://github.com/mojombo/jekyll">visiting the project on GitHub</a>.</p>
+<hr />
+<p>Part 2 coming soon!
+If you like what you read you can check out my previous posts listed in my <a href="https://jamesnvk.github.io/archives/">archive</a>. Or you can check out the full source code for my latest project on github <a href="https://github.com/jamesnvk/openhealth">here</a>.</p>
+
 
 </div>
 
@@ -113,18 +120,27 @@
     
       <li>
         <h3>
-          <a href="/2014/01/02/introducing-lanyon/">
-            Introducing Lanyon
-            <small>02 Jan 2014</small>
+          <a href="/2016/10/14/graduating-flatiron-school/">
+            Graduating Flatiron School and the Future
+            <small>14 Oct 2016</small>
           </a>
         </h3>
       </li>
     
       <li>
         <h3>
-          <a href="/2014/01/01/example-content/">
-            Example content
-            <small>01 Jan 2014</small>
+          <a href="/2016/10/07/angularjs-spa-rails-api/">
+            AngularJS Single Page Application with Rails API backend
+            <small>07 Oct 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/09/13/railsjs-jquery-front-end/">
+            RailsJS jQuery Front End - Handlebars
+            <small>13 Sep 2016</small>
           </a>
         </h3>
       </li>

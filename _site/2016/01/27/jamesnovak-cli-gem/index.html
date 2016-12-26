@@ -119,7 +119,7 @@
 
 <p>Alright! Lets get started shall we?</p>
 
-<h2 id="plan-your-gem-imagine-your-interface">1. Plan your gem, imagine your interface</h2>
+<h2 id="1-plan-your-gem-imagine-your-interface">1. Plan your gem, imagine your interface</h2>
 
 <p>A CLI seems like a fairly simple idea. The program asks a user a question, and the user responds to the question with the correct input. So when we first run our gem we want to ask our user an important question (one which they want to be asked since they installed the gem, and one that is concise and to the point.)</p>
 
@@ -129,19 +129,19 @@
 
 <p>Using <code>gets.strip</code> we can determine by number, which muscle group a user wants to see exercises for, then display that list to the user. We will of course list those muscle groups by number.</p>
 
-<h2 id="start-with-the-project-structure">2. Start with the project structure</h2>
+<h2 id="2-start-with-the-project-structure">2. Start with the project structure</h2>
 
 <p><code>bundle gem train_hard</code></p>
 
 <p>Magic! We now have a brand new directory with all of our necessary files to create a gem.</p>
 
-<h2 id="start-with-the-entry-point">3. Start with the entry point</h2>
+<h2 id="3-start-with-the-entry-point">3. Start with the entry point</h2>
 
 <p>In our <code>bin</code> directory is where we want to encapsulate all of our code into a simple call to execute our program. It seems to be best practice not to place logic in this directory. I added <code>#!/usr/bin/env ruby</code> to tell the interpreter that this is a ruby file. I also added <code>require './lib/train_hard'</code> since we will be needing our <code>cli.rb</code> class to run the file.</p>
 
 <p>In our <code>lib</code> directory is where the meat of the program lies. We have a file called <code>train_hard.rb</code> that is responsible for loading all the required files including our <code>nokogiri</code> gem and <code>open-uri</code>.</p>
 
-<h2 id="stub-out-the-interface">4. Stub out the interface</h2>
+<h2 id="4-stub-out-the-interface">4. Stub out the interface</h2>
 
 <p>Our program should start just by running <code>./bin/train_hard</code> command. Inside our bin/train_hard file we should only have code that looks like this to encapsulate our logic and run our program</p>
 <div class="message">
@@ -158,16 +158,18 @@ TrainHard::CLI.new.start
 <code>
 def display_menu<br />
   puts "Which muscle group are you training today?:"<br />
-  puts &lt;&lt;-DOC<br />
-  1. Chest<br />
-  2. Back<br />
-  3. Legs<br />
-  4. Shoulders<br />
-  5. Abs<br />
-  6. Arms<br />
+  puts &lt;&lt;-DOC<br /></code></p>
+<ol>
+  <li>Chest<br /></li>
+  <li>Back<br /></li>
+  <li>Legs<br /></li>
+  <li>Shoulders<br /></li>
+  <li>Abs<br /></li>
+  <li>Arms<br />
     DOC<br />
    end
- </code></p>
+ &lt;/code&gt;</li>
+</ol>
 
 <p>Let’s do the same for our <code>pick</code> method, which will <code>gets</code> from a user to enter the number which they would like to train, then based on that number display that muscle’s exercises. Example:<br />
 <code>
@@ -184,17 +186,19 @@ def display_menu<br />
 
 <p>Now that we have our code stubbed lets start actually programming!</p>
 
-<h2 id="start-making-things-real-discover-objects-program">5. Start making things real. Discover objects. PROGRAM</h2>
+<h2 id="5-start-making-things-real-discover-objects-program">5. Start making things real. Discover objects. PROGRAM</h2>
 
 <p>The fun part! The first thing we have to do is figure out what exactly a “muscle” consists of, and what our <code>muscle class</code> is going to do for us. 
 What is a “muscle” ?
-What is an “exercise” ?
-1. A muscle has a name 
-2. A muscle has many exercises.
-3. An exercise belongs to a muscle.
+What is an “exercise” ?</p>
+<ol>
+  <li>A muscle has a name</li>
+  <li>A muscle has many exercises.</li>
+  <li>An exercise belongs to a muscle.
 These can be represented here in <code>class Muscle</code>: <code>attr_accessor :name, :exercises</code>.<br />
 <code> class Exercise </code> <br />
-<code> attr_accessor :name, :muscle </code></p>
+<code> attr_accessor :name, :muscle </code></li>
+</ol>
 
 <p>Next we want to be able to build a muscle object by scraping it off of a website. Our goal is to find all the muscles we want to include and for each muscle, create a muscle instance. To do this we are going to need a separate <code>Scaper</code> class, since a muscle class’s responsibility is to create instances of muscles, not scrape information. In our scraper class we are going to define a <code>get_page</code> method and setup our <code>Nokogiri</code> with our index url. Read more about Nokogiri and open-uri <a href="http://ruby.bastardsbook.com/chapters/html-parsing/">here</a></p>
 
@@ -220,6 +224,15 @@ Let’s break this code down. First we are referencing the first muscle that has
     
       <li>
         <h3>
+          <a href="/2016/12/25/authorization-usability-railsangular/">
+            Managing Authorization - and Usability - in Rails/AngularJS Part 1
+            <small>25 Dec 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/2016/10/14/graduating-flatiron-school/">
             Graduating Flatiron School and the Future
             <small>14 Oct 2016</small>
@@ -232,15 +245,6 @@ Let’s break this code down. First we are referencing the first muscle that has
           <a href="/2016/10/07/angularjs-spa-rails-api/">
             AngularJS Single Page Application with Rails API backend
             <small>07 Oct 2016</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2016/09/13/railsjs-jquery-front-end/">
-            RailsJS jQuery Front End - Handlebars
-            <small>13 Sep 2016</small>
           </a>
         </h3>
       </li>
