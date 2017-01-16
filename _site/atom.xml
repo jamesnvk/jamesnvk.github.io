@@ -4,13 +4,46 @@
  <title>Lanyon</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2016-12-26T00:03:31-05:00</updated>
+ <updated>2017-01-15T21:35:59-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Mark Otto</name>
    <email>markdotto@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Advanced JavaScript - Scope</title>
+   <link href="http://localhost:4000/2017/01/15/advanced-js-scope/"/>
+   <updated>2017-01-15T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2017/01/15/advanced-js-scope</id>
+   <content type="html">&lt;p&gt;I have an obsession with learning, especially when it is something I want to master. I am currently reading &lt;em&gt;You Don’t Know JS&lt;/em&gt; by Kyle Simpson. So far this book has really helped me solidify my understanding of what is &lt;em&gt;really&lt;/em&gt; going on under the hood in the JavaScript engine. It’s been so helpful that I actually decided to put down the money for a monthly subscription to his Frontend Masters curriculum. Today I’m going to be covering the basics of scope in JS. If you would like to read more, I highly recommend checking out his book (it’s free on &lt;a href=&quot;https://github.com/getify/You-Dont-Know-JS&quot; target=&quot;_blank&quot;&gt;github&lt;/a&gt;!)&lt;/p&gt;
+
+&lt;p&gt;What is scope? I like to think of scope as a bubble. There can be objects, functions, and even other bubbles inside this bubble, but bubbles never overlap - meaning each bubble has its own “environment”. You can create a bubble by declaring a function, which in technical terms means authoring a &lt;em&gt;function declaration&lt;/em&gt;. Contrast this with authoring a &lt;em&gt;function expression&lt;/em&gt;, which is treated differently by the JavaScript compiler.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ss19.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Since JavaScript treats its functions as first class citizens, any function that is &lt;em&gt;declared&lt;/em&gt; will get precedence over other variables that are declared with the same name. It also means that if I decided to call foo() at the top of the file, it would behave as expected, unlike a call to bar, which I will explain below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ss21.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Contrary to popular belief, JavaScript is actually a compiled language.&lt;br /&gt;
+&lt;code&gt;var a = 2;&lt;/code&gt; 
+How does this code work? It may seem simple, and most people that are coming from different languages (including myself, I started out learning Ruby) will look at that code and think it is executed as a single statement. That is actually incorrect in JavaScript. When the compiler first encounters &lt;code&gt;var a&lt;/code&gt; it asks our current scope or bubble if variable a already exists - if it does, our compiler ignores the statement, if it doesn’t it creates a new variable in the current bubble. &lt;strong&gt;Remember that when a new variable is created initially its value is set to undefined.&lt;/strong&gt; Once our compiler is done compiling code, our engine then handles the &lt;code&gt; a = 2 &lt;/code&gt; assignment during run time. The engine comes across a = 2 and asks our current bubble, do you have a variable a? The bubble responds yes, hands the variable a off to engine and engine assigns it to the value 2.&lt;/p&gt;
+
+&lt;p&gt;What happens when our bubble doesn’t have the variable the engine is asking for? It looks for it outside of its current bubble (if its not in global, of course). The process repeats until it finally reaches the global scope and if it does not find the variable, the result is an error. However, there is a gotcha. If a variable is being &lt;em&gt;assigned&lt;/em&gt;: for example there’s this following code:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ss20.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;during run time and it reaches global scope, global scope will &lt;strong&gt;create a new variable&lt;/strong&gt; for us to use. As you can imagine, this will most likely lead to a whole bunch of nightmare situations. This is why a lot of developers advocate the use of “use strict”; on top of the source file to prevent this situation from ever happening.&lt;/p&gt;
+
+&lt;p&gt;I thought it seemed like a lot to take in at first, coming from a dynamic language like Ruby. There is also a whole set of details that I did not cover here that includes compiler terminology like “LHS” and “RHS” when our engine handles the code. But as I’m learning more and more about how JavaScript really works, the language is starting to grow on me. Even though I develop primarily in Angular, I’m confident that I have the necessary foundational skillset that will allow me pickup any future JS framework and hit the ground running.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;If you like what you read you can check out my previous posts listed in my &lt;a href=&quot;https://jamesnvk.github.io/archives/&quot;&gt;archive&lt;/a&gt;. Or you can check out the full source code for my latest project on github &lt;a href=&quot;https://github.com/jamesnvk/openhealth&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Managing Authorization - and Usability - in Rails/AngularJS Part 1</title>
