@@ -102,38 +102,31 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2017/01/15/advanced-js-scope/">
-        Advanced JavaScript - Scope
+      <a href="/2017/02/16/advanced-js-this/">
+        Advanced JavaScript - this
       </a>
     </h1>
 
-    <span class="post-date">15 Jan 2017</span>
+    <span class="post-date">16 Feb 2017</span>
 
-    <p>I have an obsession with learning, especially when it is something I want to master. I am currently reading <em>You Don’t Know JS</em> by Kyle Simpson. So far this book has really helped me solidify my understanding of what is <em>really</em> going on under the hood in the JavaScript engine. It’s been so helpful that I actually decided to put down the money for a monthly subscription to his Frontend Masters curriculum. Today I’m going to be covering the basics of scope in JS. If you would like to read more, I highly recommend checking out his book (it’s free on <a href="https://github.com/getify/You-Dont-Know-JS" target="_blank">github</a>!)</p>
+    <p>The <code>this</code> keyword in JavaScript seems to be one of the most confusing mechanisms in the entire language. It is often compared to <code>self</code> in Ruby, which is a completely false comparison. In this blog post I am going to break down why that is, and how developers can effectively leverage the use of <code>this</code> instead of sit and wonder why things are breaking.</p>
 
-<p>What is scope? I like to think of scope as a bubble. There can be objects, functions, and even other bubbles inside this bubble, but bubbles never overlap - meaning each bubble has its own “environment”. You can create a bubble by declaring a function, which in technical terms means authoring a <em>function declaration</em>. Contrast this with authoring a <em>function expression</em>, which is treated differently by the JavaScript compiler.</p>
+<p>At its core, <code>this</code> is a run-time binding. In other words, it is a binding that is made when a function is invoked, and what it references is determined by the <em>callsite</em> of the function. The <em>callsite</em> is the place in code where a function gets executed. Every function, while executing, has a reference to its current execution context, called <code>this</code>.</p>
 
-<p><img src="/assets/ss19.png" alt="Alt text" /></p>
+<p>There are 4 main rules to follow when we think about <code>this</code>.</p>
+<blockquote>
+  <ol>
+    <li>Was the function called with <code>new</code>? If yes, <code>this</code> is that object.</li>
+    <li>Was the function called with <code>call()</code> or <code>apply()</code>? If yes, use the passed in <code>this</code> argument.</li>
+    <li>Was the function called with a containing object? If yes, use that object.</li>
+    <li>Default: fall back to global context, unless in <code>strict</code> mode.</li>
+  </ol>
+</blockquote>
 
-<p>Since JavaScript treats its functions as first class citizens, any function that is <em>declared</em> will get precedence over other variables that are declared with the same name. It also means that if I decided to call foo() at the top of the file, it would behave as expected, unlike a call to bar, which I will explain below.</p>
-
-<p><img src="/assets/ss21.png" alt="Alt text" /></p>
-
-<p>Contrary to popular belief, JavaScript is actually a compiled language.<br />
-<code>var a = 2;</code> 
-How does this code work? It may seem simple, and most people that are coming from different languages (including myself, I started out learning Ruby) will look at that code and think it is executed as a single statement. That is actually incorrect in JavaScript. When the compiler first encounters <code>var a</code> it asks our current scope or bubble if variable a already exists - if it does, our compiler ignores the statement, if it doesn’t it creates a new variable in the current bubble. <strong>Remember that when a new variable is created initially its value is set to undefined.</strong> Once our compiler is done compiling code, our engine then handles the <code> a = 2 </code> assignment during run time. The engine comes across a = 2 and asks our current bubble, do you have a variable a? The bubble responds yes, hands the variable a off to engine and engine assigns it to the value 2.</p>
-
-<p>What happens when our bubble doesn’t have the variable the engine is asking for? It looks for it outside of its current bubble (if its not in global, of course). The process repeats until it finally reaches the global scope and if it does not find the variable, the result is an error. However, there is a gotcha. If a variable is being <em>assigned</em>: for example there’s this following code:</p>
-
-<p><img src="/assets/ss20.png" alt="Alt text" /></p>
-
-<p>during run time and it reaches global scope, global scope will <strong>create a new variable</strong> for us to use. As you can imagine, this will most likely lead to a whole bunch of nightmare situations. This is why a lot of developers advocate the use of “use strict”; on top of the source file to prevent this situation from ever happening.</p>
-
-<p>I thought it seemed like a lot to take in at first, coming from a dynamic language like Ruby. There is also a whole set of details that I did not cover here that includes compiler terminology like “LHS” and “RHS” when our engine handles the code. But as I’m learning more and more about how JavaScript really works, the language is starting to grow on me. Even though I develop primarily in Angular, I’m confident that I have the necessary foundational skillset that will allow me pickup any future JS framework and hit the ground running.</p>
+<p>That’s it! These rules are in order of precedence, so the <code>new</code> keyword will always overwrite a containing object. The big take away here if you want to determine <code>this</code> is to focus on the callsite, then ask yourself those 4 rules.</p>
 
 <hr />
-<p>If you like what you read you can check out my previous posts listed in my <a href="https://jamesnvk.github.io/archives/">archive</a>. Or you can check out the full source code for my latest project on github <a href="https://github.com/jamesnvk/openhealth">here</a>.</p>
-
+<p>If you like what you read you can check out my previous posts listed in my <a href="https://jamesnvk.github.io/archives/">archive</a>. Or you can check out my github <a href="https://github.com/jamesnvk/" target="_blank">here</a>.</p>
 
   </div>
 </div>

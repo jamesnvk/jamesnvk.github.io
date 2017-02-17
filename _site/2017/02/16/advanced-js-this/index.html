@@ -67,7 +67,7 @@
     
       
         
-          <a class="sidebar-nav-item active" href="/archives/">Archive</a>
+          <a class="sidebar-nav-item" href="/archives/">Archive</a>
         
       
     
@@ -98,86 +98,62 @@
       </div>
 
       <div class="container content">
-        <div class="page">
-  <h1 class="page-title">Archive</h1>
-  <section id="archive">
-  <h3>This year's posts</h3>
-  
-    
-      <ul class="this">
-    
-      <li><time>16 Feb</time> | <a href="/2017/02/16/advanced-js-this/">Advanced JavaScript - this</a></li>
-  
-    
-      
-      
-      
-    
-      <li><time>15 Jan</time> | <a href="/2017/01/15/advanced-js-scope/">Advanced JavaScript - Scope</a></li>
-  
-    
-      
-      
-      
-        </ul>
-        <h3>2016</h3>
-        <ul class="past">
-      
-    
-      <li><time>25 Dec</time> | <a href="/2016/12/25/authorization-usability-railsangular/">Managing Authorization - and Usability - in Rails/AngularJS Part 1</a></li>
-  
-    
-      
-      
-      
-    
-      <li><time>14 Oct</time> | <a href="/2016/10/14/graduating-flatiron-school/">Graduating Flatiron School and the Future</a></li>
-  
-    
-      
-      
-      
-    
-      <li><time>07 Oct</time> | <a href="/2016/10/07/angularjs-spa-rails-api/">AngularJS Single Page Application with Rails API backend</a></li>
-  
-    
-      
-      
-      
-    
-      <li><time>13 Sep</time> | <a href="/2016/09/13/railsjs-jquery-front-end/">RailsJS jQuery Front End - Handlebars</a></li>
-  
-    
-      
-      
-      
-    
-      <li><time>02 Jul</time> | <a href="/2016/07/02/restful-rails-blog-with-oauth/">RESTful Rails Blog with OAuth</a></li>
-  
-    
-      
-      
-      
-    
-      <li><time>04 Jun</time> | <a href="/2016/06/04/why-software/">Why software?</a></li>
-  
-    
-      
-      
-      
-    
-      <li><time>27 Mar</time> | <a href="/2016/03/27/sinatra-ar-mvc-app/">Sinatra ActiveRecord MVC Application</a></li>
-  
-    
-      
-      
-      
-    
-      <li><time>27 Jan</time> | <a href="/2016/01/27/jamesnovak-cli-gem/">Building a CLI Gem</a></li>
-  
-  </ul>
-</section>
+        <div class="post">
+  <h1 class="post-title">Advanced JavaScript - this</h1>
+  <span class="post-date">16 Feb 2017</span>
+  <p>The <code>this</code> keyword in JavaScript seems to be one of the most confusing mechanisms in the entire language. It is often compared to <code>self</code> in Ruby, which is a completely false comparison. In this blog post I am going to break down why that is, and how developers can effectively leverage the use of <code>this</code> instead of sit and wonder why things are breaking.</p>
 
+<p>At its core, <code>this</code> is a run-time binding. In other words, it is a binding that is made when a function is invoked, and what it references is determined by the <em>callsite</em> of the function. The <em>callsite</em> is the place in code where a function gets executed. Every function, while executing, has a reference to its current execution context, called <code>this</code>.</p>
+
+<p>There are 4 main rules to follow when we think about <code>this</code>.</p>
+<blockquote>
+  <ol>
+    <li>Was the function called with <code>new</code>? If yes, <code>this</code> is that object.</li>
+    <li>Was the function called with <code>call()</code> or <code>apply()</code>? If yes, use the passed in <code>this</code> argument.</li>
+    <li>Was the function called with a containing object? If yes, use that object.</li>
+    <li>Default: fall back to global context, unless in <code>strict</code> mode.</li>
+  </ol>
+</blockquote>
+
+<p>That’s it! These rules are in order of precedence, so the <code>new</code> keyword will always overwrite a containing object. The big take away here if you want to determine <code>this</code> is to focus on the callsite, then ask yourself those 4 rules.</p>
+
+<hr />
+<p>If you like what you read you can check out my previous posts listed in my <a href="https://jamesnvk.github.io/archives/">archive</a>. Or you can check out my github <a href="https://github.com/jamesnvk/" target="_blank">here</a>.</p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2017/01/15/advanced-js-scope/">
+            Advanced JavaScript - Scope
+            <small>15 Jan 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/12/25/authorization-usability-railsangular/">
+            Managing Authorization - and Usability - in Rails/AngularJS Part 1
+            <small>25 Dec 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/10/14/graduating-flatiron-school/">
+            Graduating Flatiron School and the Future
+            <small>14 Oct 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
 </div>
 
       </div>

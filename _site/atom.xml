@@ -4,13 +4,39 @@
  <title>Lanyon</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-01-15T21:35:59-05:00</updated>
+ <updated>2017-02-17T12:51:27-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Mark Otto</name>
    <email>markdotto@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Advanced JavaScript - this</title>
+   <link href="http://localhost:4000/2017/02/16/advanced-js-this/"/>
+   <updated>2017-02-16T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2017/02/16/advanced-js-this</id>
+   <content type="html">&lt;p&gt;The &lt;code&gt;this&lt;/code&gt; keyword in JavaScript seems to be one of the most confusing mechanisms in the entire language. It is often compared to &lt;code&gt;self&lt;/code&gt; in Ruby, which is a completely false comparison. In this blog post I am going to break down why that is, and how developers can effectively leverage the use of &lt;code&gt;this&lt;/code&gt; instead of sit and wonder why things are breaking.&lt;/p&gt;
+
+&lt;p&gt;At its core, &lt;code&gt;this&lt;/code&gt; is a run-time binding. In other words, it is a binding that is made when a function is invoked, and what it references is determined by the &lt;em&gt;callsite&lt;/em&gt; of the function. The &lt;em&gt;callsite&lt;/em&gt; is the place in code where a function gets executed. Every function, while executing, has a reference to its current execution context, called &lt;code&gt;this&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;There are 4 main rules to follow when we think about &lt;code&gt;this&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;ol&gt;
+    &lt;li&gt;Was the function called with &lt;code&gt;new&lt;/code&gt;? If yes, &lt;code&gt;this&lt;/code&gt; is that object.&lt;/li&gt;
+    &lt;li&gt;Was the function called with &lt;code&gt;call()&lt;/code&gt; or &lt;code&gt;apply()&lt;/code&gt;? If yes, use the passed in &lt;code&gt;this&lt;/code&gt; argument.&lt;/li&gt;
+    &lt;li&gt;Was the function called with a containing object? If yes, use that object.&lt;/li&gt;
+    &lt;li&gt;Default: fall back to global context, unless in &lt;code&gt;strict&lt;/code&gt; mode.&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;That’s it! These rules are in order of precedence, so the &lt;code&gt;new&lt;/code&gt; keyword will always overwrite a containing object. The big take away here if you want to determine &lt;code&gt;this&lt;/code&gt; is to focus on the callsite, then ask yourself those 4 rules.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;If you like what you read you can check out my previous posts listed in my &lt;a href=&quot;https://jamesnvk.github.io/archives/&quot;&gt;archive&lt;/a&gt;. Or you can check out my github &lt;a href=&quot;https://github.com/jamesnvk/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Advanced JavaScript - Scope</title>
