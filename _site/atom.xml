@@ -4,13 +4,44 @@
  <title>Lanyon</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-02-17T12:51:27-05:00</updated>
+ <updated>2017-02-23T12:01:41-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Mark Otto</name>
    <email>markdotto@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Advanced JavaScript - new</title>
+   <link href="http://localhost:4000/2017/02/23/advanced-js-new/"/>
+   <updated>2017-02-23T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2017/02/23/advanced-js-new</id>
+   <content type="html">&lt;p&gt;Since I just wrote up a &lt;a href=&quot;https://jamesnvk.github.io/2017/02/16/advanced-js-this/&quot;&gt;blog post on the this keyword&lt;/a&gt;, I figured I would round up some knowledge on &lt;code&gt;new&lt;/code&gt;. The &lt;code&gt;new&lt;/code&gt; keyword does have some built in ties to &lt;code&gt;this&lt;/code&gt; that I want to illuminate, but I also want to clarify some misconceptions about &lt;code&gt;new&lt;/code&gt; in the world of JavaScript.&lt;/p&gt;
+
+&lt;p&gt;One common misconception in JavaScript is that when we are calling &lt;code&gt;new&lt;/code&gt; we are instantiating a new object from some sort of class. Instead, what we are really doing here is &lt;em&gt;constructing&lt;/em&gt; a brand new object, then attaching whatever properties our &lt;em&gt;function constructor&lt;/em&gt; has. For example:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ss22.png&quot; alt=&quot;Alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Notice that the &lt;code&gt;f&lt;/code&gt; in &lt;code&gt;foo&lt;/code&gt; is lowercase. This is to illustrate the point that even though we typically see function constructors start with a capital letter, that is simply just a convention to let other developers know that the function is meant to be used as a constructor.&lt;/p&gt;
+
+&lt;p&gt;So what exactly happened when we called &lt;code&gt;new foo()&lt;/code&gt;? Just like the &lt;a href=&quot;https://jamesnvk.github.io/2017/02/16/advanced-js-this/&quot;&gt;4 rules of this&lt;/a&gt;, &lt;code&gt;new&lt;/code&gt; has some rules as well. Can you guess how many rules there are for &lt;code&gt;new&lt;/code&gt;? If you said 4, you are correct! Let us run through what happens when we invoke a function with &lt;code&gt;new&lt;/code&gt; in front of it.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ol&gt;
+    &lt;li&gt;A brand new object is created (or constructed) out of thin air.&lt;/li&gt;
+    &lt;li&gt;That object is attached to the function’s &lt;em&gt;prototype&lt;/em&gt;.&lt;/li&gt;
+    &lt;li&gt;That object is set as the &lt;code&gt;this&lt;/code&gt; binding for the function call.&lt;/li&gt;
+    &lt;li&gt;Unless the function has a return value of an alternate object, it implicitly returns &lt;code&gt;this&lt;/code&gt; (the newly constructed object)&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Just like &lt;code&gt;this&lt;/code&gt;, &lt;code&gt;new&lt;/code&gt; isn’t some magical class oriented keyword. Understanding the core functions and principles of JavaScript can really open up the language in many ways.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;If you like what you read you can check out my previous posts listed in my &lt;a href=&quot;https://jamesnvk.github.io/archives/&quot;&gt;archive&lt;/a&gt;. Or you can check out my github &lt;a href=&quot;https://github.com/jamesnvk/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Advanced JavaScript - this</title>
