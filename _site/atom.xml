@@ -4,13 +4,31 @@
  <title>Lanyon</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-02-23T12:05:05-05:00</updated>
+ <updated>2017-03-03T17:37:16-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Mark Otto</name>
    <email>markdotto@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>ES6 Initial Impression</title>
+   <link href="http://localhost:4000/2017/03/03/es6-initial-impression/"/>
+   <updated>2017-03-03T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2017/03/03/es6-initial-impression</id>
+   <content type="html">&lt;p&gt;One of the main reasons I am so excited to continue learning to master Javascript is the constant evolution of the language. The popularity of the Angular and React frameworks have shown us that this language is here to stay. &lt;a href=&quot;https://github.com/lukehoban/es6features&quot; target=&quot;_blank&quot;&gt;ES6&lt;/a&gt; is the latest version of the language and has come with some significant updates.&lt;/p&gt;
+
+&lt;p&gt;The first thing that caught my attention and probably many others, was the &lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions&quot; target=&quot;_blank&quot;&gt;arrow function&lt;/a&gt;. My initial impression on this: not a fan. There seems to be many different syntax use cases for it that can get quite confusing if someone is not familiar. Yes, I could learn all the syntax cases but the trade off is another mental tax when reading code when I could’ve just simply typed &lt;code&gt;function&lt;/code&gt;. What I do like about the arrow function, however, is the fact that you don’t have to worry about the &lt;code&gt;this&lt;/code&gt; binding. For example, instead of using a common lexical scoping hack such as &lt;code&gt;var self = this&lt;/code&gt; to grab context for another function, the &lt;code&gt;this&lt;/code&gt; binding is &lt;em&gt;implicitly&lt;/em&gt; lexical with the arrow.&lt;/p&gt;
+
+&lt;p&gt;An ES6 update that I am a fan of are the new &lt;code&gt;let&lt;/code&gt; and &lt;code&gt;const&lt;/code&gt; &lt;a href=&quot;https://github.com/lukehoban/es6features#let--const&quot; target=&quot;_blank&quot;&gt;declarations&lt;/a&gt;. These are block-scoped binding constructs. The &lt;code&gt;let&lt;/code&gt; keyword enforces what we have already been doing stylistically with var. For example, putting a &lt;code&gt;var&lt;/code&gt; inside an &lt;code&gt;if&lt;/code&gt; block - that &lt;code&gt;var&lt;/code&gt; is still accessible to the entire scope, but it makes sense to put it there for another developer to see that that &lt;code&gt;var&lt;/code&gt; is meant to be used for that &lt;code&gt;if&lt;/code&gt; statement. The &lt;code&gt;const&lt;/code&gt; keyword is simply a variable that cannot be changed (a getter). I don’t think that just because &lt;code&gt;let&lt;/code&gt; is now in the language that we should get rid of &lt;code&gt;var&lt;/code&gt;. Both have their place in code and I prefer to write &lt;code&gt;let&lt;/code&gt; when I know I want my variable blocked - such as in a &lt;em&gt;for loop&lt;/em&gt;, or in that earlier example with the if statement.&lt;/p&gt;
+
+&lt;p&gt;Overall I think Javascript is moving in a great direction with these changes. As I learn and start incorporating more ES6 features in my code I will continue to update this blog with my thoughts. Stay tuned!&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;If you like what you read you can check out my previous posts listed in my &lt;a href=&quot;https://jamesnvk.github.io/archives/&quot;&gt;archive&lt;/a&gt;. Or you can check out my github &lt;a href=&quot;https://github.com/jamesnvk/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Advanced JavaScript - new</title>
