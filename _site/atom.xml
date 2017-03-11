@@ -4,13 +4,33 @@
  <title>Lanyon</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-03-03T17:37:16-05:00</updated>
+ <updated>2017-03-10T21:50:53-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Mark Otto</name>
    <email>markdotto@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>CS Fundamentals Reflection</title>
+   <link href="http://localhost:4000/2017/03/10/cs-fundamentals/"/>
+   <updated>2017-03-10T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2017/03/10/cs-fundamentals</id>
+   <content type="html">&lt;p&gt;I wanted to write a short blog post reflecting on the knowledge I’ve gained by working through an &lt;a href=&quot;https://github.com/jamesnvk/algorithms-and-data-structures&quot; target=&quot;_blank&quot;&gt;algorithms and data structures workshop&lt;/a&gt;. I don’t have a traditional CS degree, so I’m currently drinking the firehose of CS fundamentals - learning four semesters worth of material in a few months time is challenging but extremely rewarding.&lt;/p&gt;
+
+&lt;p&gt;Mastering a craft isn’t easy, and I realized that in order to be a well rounded software engineer I need to obtain a solid foundation on the basics of algorithms and data structures. Flatiron School taught me how to learn and program &lt;em&gt;effectively&lt;/em&gt;, so now I’m in the process of acquiring the skills to solve problems &lt;em&gt;both&lt;/em&gt; &lt;em&gt;efficiently&lt;/em&gt; and effectively.&lt;/p&gt;
+
+&lt;p&gt;I’ve also learned that understanding how to approach a problem is an underrated skill as well. Problems always have two specific parts: a set of allowed inputs and the required properties of its output. I learned that having this model, then walking through the problem by breaking it down into smaller, more manageable parts, is a great way to approach most problems.&lt;/p&gt;
+
+&lt;p&gt;I’m very grateful to have learned two different programming paradigms early on in my career. Understanding the ins-and-outs of an object oriented programming language with Ruby, then moving to a functional language like JavaScript has really opened my eyes to the vast amounts of different patterns and approaches people can take whether its solving a simple problem or building a production level application at scale.&lt;/p&gt;
+
+&lt;p&gt;Since graduating, my thirst for learning and growth hasn’t stopped. I think it has actually increased. I know I chose the right path, because its starting to feel like the beginning of a long and exciting career.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;If you like what you read you can check out my previous posts listed in my &lt;a href=&quot;https://jamesnvk.github.io/archives/&quot;&gt;archive&lt;/a&gt;. Or you can check out my github &lt;a href=&quot;https://github.com/jamesnvk/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>ES6 Initial Impression</title>
