@@ -106,18 +106,35 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2017/04/02/mergesort/">
-        Mergesort
+      <a href="/2017/04/14/oo-design/">
+        Object Oriented Design
       </a>
     </h1>
 
-    <span class="post-date">02 Apr 2017</span>
+    <span class="post-date">14 Apr 2017</span>
 
-    <p>Mergesort in JavaScript was a fun algorithm to implement. It was the first algorithm that I coded that wasn’t quadratic in run-time. It seems to me that solving problems with an O(n^2) run-time is easier on the brain, while solving problems in O(n log n) or less requires much more processing power. If only brains and computers could merge… <em>I’m looking at you Elon Musk</em>. You can check the full source code <a href="https://github.com/jamesnvk/algorithms-and-data-structures/blob/master/algorithms/mergesort.js" target="_blank">here</a>.</p>
+    <p>I’m currently reading an excellent book on object oriented design called Practical Object Oriented Design in Ruby, also known as <em>POODR</em> by Sandi Metz. The following posts in the upcoming weeks will be notes I’m taking down as I’m going through the book.</p>
 
-<p>Mergesort is a staple divide and conquer algorithm. A divide and conquer algorithm is a design pattern that works by recursively breaking a problem down into smaller sub problems until the solutions to the sub problems can be combined to solve the bigger problem. Small problems are easier to solve than big problems, so we can take advantage of two partial solutions to construct a solution to the bigger overall problem.</p>
+<h3 id="object-oriented-design-is-about-managing-dependencies">Object oriented design is about managing dependencies.</h3>
+<p>It is a set of coding techniques that arrange dependencies so that they can manage change. If objects know too much about every other object, it creates havoc. Changing one object can lead to causing many other objects to change as well.</p>
 
-<p>Mergesort does this in two (arguably) main steps - first breaking down the array into sub arrays until there is less than 2 elements (which makes it sorted since an array of 1 is automatically sorted), then implementing a merge routine. The main sorting happens during the merge routine, hence the name mergesort. The hardest part was implementing the merge routine. The trick is to keep track of the left and right arrays with pointers, incrementing the pointers as we move across the array in a loop while comparing elements. Once we reach the end of the array, concat the remaining elements in the opposing array and the array should be sorted.</p>
+<h3 id="the-purpose-of-design-is-to-allow-you-to-design-later-and-its-primary-goal-is-to-reduce-the-cost-of-change">The purpose of design is to allow you to design later and its primary goal is to reduce the cost of change.</h3>
+<p>The difficulty of design is that every problem always has 2 components: the feature that you’re trying to implement and the code for that feature has to be amenable for future you or future team members. The code that your implementing shouldn’t guess the future, it should preserve options for accomodating it - it leaves room to maneuver.</p>
+
+<h3 id="agile-software-development-is-perfectly-suited-for-oo-applications">Agile software development is perfectly suited for OO applications.</h3>
+<ul>
+  <li>Agile development is a methodology. It’s a way of working as a team.</li>
+  <li>It’s iterative, works in sprints.</li>
+  <li>Streamlined. Getting to work and getting things done instead of worrying about tons of documentation.</li>
+  <li>Timeboxing. Plan your work by time, instead of by features.
+Build software in tiny increments and show the user, gradually iterating your way into an application that meets customers’ true needs.</li>
+</ul>
+
+<h3 id="judging-design-means-finding-the-right-balance-between-starting-to-actually-implement-code-and-designing-the-software">Judging design means finding the right balance between starting to actually implement code and designing the software.</h3>
+<p>Technical Debt is a design compromise that is made when wanting to get a feature done right away over the cost of good design. It is a loan that will need to be repaid.</p>
+
+<hr />
+<p>If you like what you read you can check out my previous posts listed in my <a href="https://jamesnvk.github.io/archives/">archive</a>. Or you can check out my github <a href="https://github.com/jamesnvk/" target="_blank">here</a>.</p>
 
   </div>
 </div>

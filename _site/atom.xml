@@ -4,13 +4,43 @@
  <title>Lanyon</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-04-02T20:06:41-04:00</updated>
+ <updated>2017-04-16T17:33:32-04:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Mark Otto</name>
    <email>markdotto@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Object Oriented Design</title>
+   <link href="http://localhost:4000/2017/04/14/oo-design/"/>
+   <updated>2017-04-14T00:00:00-04:00</updated>
+   <id>http://localhost:4000/2017/04/14/oo-design</id>
+   <content type="html">&lt;p&gt;I’m currently reading an excellent book on object oriented design called Practical Object Oriented Design in Ruby, also known as &lt;em&gt;POODR&lt;/em&gt; by Sandi Metz. The following posts in the upcoming weeks will be notes I’m taking down as I’m going through the book.&lt;/p&gt;
+
+&lt;h3 id=&quot;object-oriented-design-is-about-managing-dependencies&quot;&gt;Object oriented design is about managing dependencies.&lt;/h3&gt;
+&lt;p&gt;It is a set of coding techniques that arrange dependencies so that they can manage change. If objects know too much about every other object, it creates havoc. Changing one object can lead to causing many other objects to change as well.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-purpose-of-design-is-to-allow-you-to-design-later-and-its-primary-goal-is-to-reduce-the-cost-of-change&quot;&gt;The purpose of design is to allow you to design later and its primary goal is to reduce the cost of change.&lt;/h3&gt;
+&lt;p&gt;The difficulty of design is that every problem always has 2 components: the feature that you’re trying to implement and the code for that feature has to be amenable for future you or future team members. The code that your implementing shouldn’t guess the future, it should preserve options for accomodating it - it leaves room to maneuver.&lt;/p&gt;
+
+&lt;h3 id=&quot;agile-software-development-is-perfectly-suited-for-oo-applications&quot;&gt;Agile software development is perfectly suited for OO applications.&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Agile development is a methodology. It’s a way of working as a team.&lt;/li&gt;
+  &lt;li&gt;It’s iterative, works in sprints.&lt;/li&gt;
+  &lt;li&gt;Streamlined. Getting to work and getting things done instead of worrying about tons of documentation.&lt;/li&gt;
+  &lt;li&gt;Timeboxing. Plan your work by time, instead of by features.
+Build software in tiny increments and show the user, gradually iterating your way into an application that meets customers’ true needs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;judging-design-means-finding-the-right-balance-between-starting-to-actually-implement-code-and-designing-the-software&quot;&gt;Judging design means finding the right balance between starting to actually implement code and designing the software.&lt;/h3&gt;
+&lt;p&gt;Technical Debt is a design compromise that is made when wanting to get a feature done right away over the cost of good design. It is a loan that will need to be repaid.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;If you like what you read you can check out my previous posts listed in my &lt;a href=&quot;https://jamesnvk.github.io/archives/&quot;&gt;archive&lt;/a&gt;. Or you can check out my github &lt;a href=&quot;https://github.com/jamesnvk/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Mergesort</title>

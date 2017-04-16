@@ -103,23 +103,27 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Advanced JavaScript - this</h1>
-  <span class="post-date">16 Feb 2017</span>
-  <p>The <code>this</code> keyword in JavaScript seems to be one of the most confusing mechanisms in the entire language. It is often compared to <code>self</code> in Ruby, which is a completely false comparison. In this blog post I am going to break down why that is, and how developers can effectively leverage the use of <code>this</code> instead of sit and wonder why things are breaking.</p>
+  <h1 class="post-title">Object Oriented Design</h1>
+  <span class="post-date">14 Apr 2017</span>
+  <p>I’m currently reading an excellent book on object oriented design called Practical Object Oriented Design in Ruby, also known as <em>POODR</em> by Sandi Metz. The following posts in the upcoming weeks will be notes I’m taking down as I’m going through the book.</p>
 
-<p>At its core, <code>this</code> is a run-time binding. In other words, it is a binding that is made when a function is invoked, and what it references is determined by the <em>callsite</em> of the function. The <em>callsite</em> is the place in code where a function gets executed. Every function, while executing, has a reference to its current execution context, called <code>this</code>.</p>
+<h3 id="object-oriented-design-is-about-managing-dependencies">Object oriented design is about managing dependencies.</h3>
+<p>It is a set of coding techniques that arrange dependencies so that they can manage change. If objects know too much about every other object, it creates havoc. Changing one object can lead to causing many other objects to change as well.</p>
 
-<p>There are 4 main rules to follow when we think about <code>this</code>.</p>
-<blockquote>
-  <ol>
-    <li>Was the function called with <code>new</code>? If yes, <code>this</code> is that object.</li>
-    <li>Was the function called with <code>call()</code> or <code>apply()</code>? If yes, use the passed in <code>this</code> argument.</li>
-    <li>Was the function called with a containing object? If yes, use that object.</li>
-    <li>Default: fall back to global context, unless in <code>strict</code> mode.</li>
-  </ol>
-</blockquote>
+<h3 id="the-purpose-of-design-is-to-allow-you-to-design-later-and-its-primary-goal-is-to-reduce-the-cost-of-change">The purpose of design is to allow you to design later and its primary goal is to reduce the cost of change.</h3>
+<p>The difficulty of design is that every problem always has 2 components: the feature that you’re trying to implement and the code for that feature has to be amenable for future you or future team members. The code that your implementing shouldn’t guess the future, it should preserve options for accomodating it - it leaves room to maneuver.</p>
 
-<p>That’s it! These rules are in order of precedence, so the <code>new</code> keyword will always overwrite a containing object. The big take away here if you want to determine <code>this</code> is to focus on the callsite, then ask yourself those 4 rules.</p>
+<h3 id="agile-software-development-is-perfectly-suited-for-oo-applications">Agile software development is perfectly suited for OO applications.</h3>
+<ul>
+  <li>Agile development is a methodology. It’s a way of working as a team.</li>
+  <li>It’s iterative, works in sprints.</li>
+  <li>Streamlined. Getting to work and getting things done instead of worrying about tons of documentation.</li>
+  <li>Timeboxing. Plan your work by time, instead of by features.
+Build software in tiny increments and show the user, gradually iterating your way into an application that meets customers’ true needs.</li>
+</ul>
+
+<h3 id="judging-design-means-finding-the-right-balance-between-starting-to-actually-implement-code-and-designing-the-software">Judging design means finding the right balance between starting to actually implement code and designing the software.</h3>
+<p>Technical Debt is a design compromise that is made when wanting to get a feature done right away over the cost of good design. It is a loan that will need to be repaid.</p>
 
 <hr />
 <p>If you like what you read you can check out my previous posts listed in my <a href="https://jamesnvk.github.io/archives/">archive</a>. Or you can check out my github <a href="https://github.com/jamesnvk/" target="_blank">here</a>.</p>
@@ -129,15 +133,6 @@
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/2017/04/14/oo-design/">
-            Object Oriented Design
-            <small>14 Apr 2017</small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -153,6 +148,15 @@
           <a href="/2017/03/10/cs-fundamentals/">
             CS Fundamentals Reflection
             <small>10 Mar 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2017/03/03/es6-initial-impression/">
+            ES6 Initial Impression
+            <small>03 Mar 2017</small>
           </a>
         </h3>
       </li>
