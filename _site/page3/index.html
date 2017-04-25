@@ -81,6 +81,10 @@
         
       
     
+      
+        
+      
+    
 
     <!--<a class="sidebar-nav-item" href="/archive/v1.0.0.zip">Download</a> 
     <a class="sidebar-nav-item" href="">GitHub project</a> -->
@@ -106,32 +110,37 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2017/04/14/oo-design/">
-        Object Oriented Design
+      <a href="/2017/04/25/designing-classes-srp/">
+        Designing Classes with a Single Responsibility
       </a>
     </h1>
 
-    <span class="post-date">14 Apr 2017</span>
+    <span class="post-date">25 Apr 2017</span>
 
-    <p>I’m currently reading an excellent book on object oriented design called Practical Object Oriented Design in Ruby, also known as <em>POODR</em> by Sandi Metz. The following posts in the upcoming weeks will be notes I’m taking down as I’m going through the book.</p>
+    <h3 id="classes">Classes</h3>
+<p>The goal of modeling classes is to keep it simple enough to do what it is supposed to right now, and is also easy to change later. Design is more of the art of preserving changeability than it is the act of achieving perfection.</p>
 
-<h3 id="object-oriented-design-is-about-managing-dependencies">Object oriented design is about managing dependencies.</h3>
-<p>It is a set of coding techniques that arrange dependencies so that they can manage change. If objects know too much about every other object, it creates havoc. Changing one object can lead to causing many other objects to change as well.</p>
+<h3 id="single-responsibility">Single Responsibility</h3>
+<p>Applications that are easy to change consist of classes that are easy to reuse. A class that has more than one responsibility is difficult to reuse. A class should do the smallest possible useful thing. Try to describe what the class does in one sentence. 
+SRP doesnt require that a class only do one very narrow thing - it requires a class be cohesive - that everything the class does be highly related to its purpose.</p>
 
-<h3 id="the-purpose-of-design-is-to-allow-you-to-design-later-and-its-primary-goal-is-to-reduce-the-cost-of-change">The purpose of design is to allow you to design later and its primary goal is to reduce the cost of change.</h3>
-<p>The difficulty of design is that every problem always has 2 components: the feature that you’re trying to implement and the code for that feature has to be amenable for future you or future team members. The code that your implementing shouldn’t guess the future, it should preserve options for accomodating it - it leaves room to maneuver.</p>
+<p>Same things apply to not only classes but methods - Ask them questions about what they do and try to describe their responsibilites in a single sentence.</p>
 
-<h3 id="agile-software-development-is-perfectly-suited-for-oo-applications">Agile software development is perfectly suited for OO applications.</h3>
-<ul>
-  <li>Agile development is a methodology. It’s a way of working as a team.</li>
-  <li>It’s iterative, works in sprints.</li>
-  <li>Streamlined. Getting to work and getting things done instead of worrying about tons of documentation.</li>
-  <li>Timeboxing. Plan your work by time, instead of by features.
-Build software in tiny increments and show the user, gradually iterating your way into an application that meets customers’ true needs.</li>
-</ul>
+<h3 id="design-decisions">Design decisions</h3>
+<p>When the future cost of doing nothing is the same as the current cost, postpone the decision. Applications are never perfectly designed, every choice has a price. “Improve it now” vs “improve it later” tension always exists.
+Depending on behavior and not data - behavior is captured in methods and invoked by sending messages.
+Use attr_accessors to encapsulate methods for only that class. Implementing these changes that data (which is referenced all over) to behavior (which is defined once).</p>
 
-<h3 id="judging-design-means-finding-the-right-balance-between-starting-to-actually-implement-code-and-designing-the-software">Judging design means finding the right balance between starting to actually implement code and designing the software.</h3>
-<p>Technical Debt is a design compromise that is made when wanting to get a feature done right away over the cost of good design. It is a loan that will need to be repaid.</p>
+<h3 id="direct-references-into-complicated-data-structures-are-a-maintenance-nightmare-because-every-reference-will-need-to-be-changed-when-the-structure-of-the-data-structure-changes">Direct references into complicated data structures are a maintenance nightmare, because every reference will need to be changed when the structure of the data structure changes.</h3>
+<p>Example: ​</p>
+<pre><code>@data -&gt; [[622,20], [622,23], [559,30], [559,40]] 
+def diameters
+  data.collect{|cell| cell[0] + (cell[1] *2)}
+end</code></pre>
+
+<p>​Creating a struct can solve this problem by defining a method that understands the structure of the incoming data structure, so that we only have to change the code in that one place if the data structure happens to change. (if its externally owned data etc.)</p>
+
+<p>The path to changeable and maintable objected oriented software begins with classes that have a single responsibility. Classes that do one thing isolate that thing from the rest of your application. This isolation allows change without consequence and reuse without duplication.</p>
 
 <hr />
 <p>If you like what you read you can check out my previous posts listed in my <a href="https://jamesnvk.github.io/archives/">archive</a>. Or you can check out my github <a href="https://github.com/jamesnvk/" target="_blank">here</a>.</p>

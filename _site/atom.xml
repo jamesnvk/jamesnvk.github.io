@@ -4,13 +4,48 @@
  <title>Lanyon</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-04-16T17:33:32-04:00</updated>
+ <updated>2017-04-25T13:56:20-04:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Mark Otto</name>
    <email>markdotto@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Designing Classes with a Single Responsibility</title>
+   <link href="http://localhost:4000/2017/04/25/designing-classes-srp/"/>
+   <updated>2017-04-25T00:00:00-04:00</updated>
+   <id>http://localhost:4000/2017/04/25/designing-classes-srp</id>
+   <content type="html">&lt;h3 id=&quot;classes&quot;&gt;Classes&lt;/h3&gt;
+&lt;p&gt;The goal of modeling classes is to keep it simple enough to do what it is supposed to right now, and is also easy to change later. Design is more of the art of preserving changeability than it is the act of achieving perfection.&lt;/p&gt;
+
+&lt;h3 id=&quot;single-responsibility&quot;&gt;Single Responsibility&lt;/h3&gt;
+&lt;p&gt;Applications that are easy to change consist of classes that are easy to reuse. A class that has more than one responsibility is difficult to reuse. A class should do the smallest possible useful thing. Try to describe what the class does in one sentence. 
+SRP doesnt require that a class only do one very narrow thing - it requires a class be cohesive - that everything the class does be highly related to its purpose.&lt;/p&gt;
+
+&lt;p&gt;Same things apply to not only classes but methods - Ask them questions about what they do and try to describe their responsibilites in a single sentence.&lt;/p&gt;
+
+&lt;h3 id=&quot;design-decisions&quot;&gt;Design decisions&lt;/h3&gt;
+&lt;p&gt;When the future cost of doing nothing is the same as the current cost, postpone the decision. Applications are never perfectly designed, every choice has a price. “Improve it now” vs “improve it later” tension always exists.
+Depending on behavior and not data - behavior is captured in methods and invoked by sending messages.
+Use attr_accessors to encapsulate methods for only that class. Implementing these changes that data (which is referenced all over) to behavior (which is defined once).&lt;/p&gt;
+
+&lt;h3 id=&quot;direct-references-into-complicated-data-structures-are-a-maintenance-nightmare-because-every-reference-will-need-to-be-changed-when-the-structure-of-the-data-structure-changes&quot;&gt;Direct references into complicated data structures are a maintenance nightmare, because every reference will need to be changed when the structure of the data structure changes.&lt;/h3&gt;
+&lt;p&gt;Example: ​&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@data -&amp;gt; [[622,20], [622,23], [559,30], [559,40]] 
+def diameters
+  data.collect{|cell| cell[0] + (cell[1] *2)}
+end&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;​Creating a struct can solve this problem by defining a method that understands the structure of the incoming data structure, so that we only have to change the code in that one place if the data structure happens to change. (if its externally owned data etc.)&lt;/p&gt;
+
+&lt;p&gt;The path to changeable and maintable objected oriented software begins with classes that have a single responsibility. Classes that do one thing isolate that thing from the rest of your application. This isolation allows change without consequence and reuse without duplication.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;If you like what you read you can check out my previous posts listed in my &lt;a href=&quot;https://jamesnvk.github.io/archives/&quot;&gt;archive&lt;/a&gt;. Or you can check out my github &lt;a href=&quot;https://github.com/jamesnvk/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Object Oriented Design</title>
